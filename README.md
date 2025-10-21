@@ -1,0 +1,1 @@
+# segunda-etapa-projeto-synergia
