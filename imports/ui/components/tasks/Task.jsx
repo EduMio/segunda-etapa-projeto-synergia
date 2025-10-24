@@ -67,7 +67,7 @@ export const Task = ({ task, onDeleteClick, onEditClick, userName }) => {
             <TaskIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText
-            primary={task.text}
+            primary={task.name}
             secondary={userName}
           />
         </ListItemButton>

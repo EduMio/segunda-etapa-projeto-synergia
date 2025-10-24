@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Meteor } from 'meteor/meteor';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { App } from '../imports/ui/App';
+import { TaskDisplay } from '../imports/ui/displays/TaskDisplay';
 import { LoginDisplay } from '../imports/ui/displays/LoginDisplay';
 import { UserProvider } from '../imports/ui/UserContext';
 import { ProtectedRoute } from '../imports/ui/ProtectedRoute';
@@ -20,7 +20,10 @@ Meteor.startup(() => {
           <Route path="/login" element={<LoginDisplay />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/home" element={<App />} />
+            <Route path="/home" element={<TaskDisplay />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/edit/:taskId" element={<TaskDisplay />} />
           </Route>
 
           <Route path="*" element={<LoginDisplay />} />

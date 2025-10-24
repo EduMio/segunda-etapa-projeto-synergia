@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";           
 import { TextField, Button, Paper } from '@mui/material';
+import { useUser } from '../../UserContext';
+
 
 export const TaskForm = () => {
   const [text, setText] = useState("");
-
+  const { user } = useUser();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!text) return;
 
     await Meteor.callAsync("tasks.insert", {
-      text: text.trim(),
-      createdAt: new Date(),
+      name: text.trim(),
+      description:"",
+      state:null,
+      userId:user._id,
+      userName:user.username,
+      createdAt:new Date() 
     });
 
     setText("");
@@ -29,7 +36,7 @@ export const TaskForm = () => {
         p: 1.5,
         mt: 2,
         maxWidth: 400,
-        mx: 'auto', // centers horizontally
+        mx: 'auto', 
       }}
     >
       <TextField

@@ -2,12 +2,10 @@ import React from 'react';
 import { List,Box } from "@mui/material";
 import PropTypes from 'prop-types';
 import { Task } from "./Task";
-import { useUser } from '../../UserContext';
 import { Meteor } from "meteor/meteor";
 
-
 export const TaskList = ({tasks}) => {
-    const  {user}  = useUser();
+
     return (
     <>
         <Box
@@ -29,7 +27,7 @@ export const TaskList = ({tasks}) => {
                     <Task
                             key={task._id}
                             task={task}
-                            userName={user.username}
+                            userName={task.userName}
                             onDeleteClick={({ _id }) => Meteor.callAsync("tasks.delete", { _id })}
                             onEditClick={()=>{}}
                         />
