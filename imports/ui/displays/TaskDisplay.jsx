@@ -5,7 +5,7 @@ import { TaskInterface } from "../components/tasks/TaskInterface";
 
 export const TaskDisplay = () => {
 
-  useSubscribe("tasks");
+  useSubscribe("tasksWithPrivacy");
 
   const tasks = useTracker(() => {
     return TasksCollection.find({},{sort:{createdAt:-1}}).fetch()

@@ -17,7 +17,9 @@ async function insertTask(taskText,user) {
     state:null,
     userId:user._id,
     userName:user.username,
-    createdAt:new Date() });
+    createdAt:new Date(),
+    isPrivate:false
+ });
 }
 
 Meteor.startup(async () => {
@@ -48,7 +50,6 @@ Meteor.startup(async () => {
 
     for (let index = 0; index < seed_2.length; index++) 
       insertTask(seed_2[index],user2);
-
       
   }
 });

@@ -3,9 +3,13 @@ import { List,Box } from "@mui/material";
 import PropTypes from 'prop-types';
 import { Task } from "./Task";
 import { Meteor } from "meteor/meteor";
+import { useUser } from '../../UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export const TaskList = ({tasks}) => {
-
+    const {user} = useUser();
+    const navigate = useNavigate();
+    
     return (
     <>
         <Box
@@ -28,8 +32,17 @@ export const TaskList = ({tasks}) => {
                             key={task._id}
                             task={task}
                             userName={task.userName}
-                            onDeleteClick={({ _id }) => Meteor.callAsync("tasks.delete", { _id })}
-                            onEditClick={()=>{}}
+                            onDeleteClick={({ _id }) => 
+                                {
+                                    if(user._id === task.userId)
+                                        Meteor.callAsync("tasks.delete", { _id });
+                                }
+                            }
+                            onEditClick={({ _id }) => 
+                                {
+                                    if(user._id === task.userId)
+                                        navigate(`/view/${_id}`);
+                                }}
                         />
                     ))}
                 </List>

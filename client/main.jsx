@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { TaskDisplay } from '../imports/ui/displays/TaskDisplay';
 import { LoginDisplay } from '../imports/ui/displays/LoginDisplay';
+import {ViewTaskDisplay} from '../imports/ui/displays/ViewTaskDisplay'
+import {EditTaskDisplay} from '../imports/ui/displays/EditTaskDisplay'
 import { UserProvider } from '../imports/ui/UserContext';
 import { ProtectedRoute } from '../imports/ui/ProtectedRoute';
 import '../imports/api/TasksMethods';
@@ -23,7 +25,10 @@ Meteor.startup(() => {
             <Route path="/home" element={<TaskDisplay />} />
           </Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="/edit/:taskId" element={<TaskDisplay />} />
+            <Route path="/view/:taskId" element={<ViewTaskDisplay />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/edit/:taskId" element={<EditTaskDisplay />} />
           </Route>
 
           <Route path="*" element={<LoginDisplay />} />

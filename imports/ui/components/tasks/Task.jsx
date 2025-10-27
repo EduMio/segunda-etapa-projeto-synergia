@@ -53,10 +53,10 @@ export const Task = ({ task, onDeleteClick, onEditClick, userName }) => {
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
               <MenuItem onClick={handleEdit}>
-                <EditIcon fontSize="small" sx={{ mr: 1 }} /> Edit
+                <EditIcon fontSize="small" sx={{ mr: 1 }} /> Editar
               </MenuItem>
               <MenuItem onClick={handleDelete}>
-                <DeleteIcon fontSize="small" sx={{ mr: 1 }} /> Delete
+                <DeleteIcon fontSize="small" sx={{ mr: 1 }} /> Deletar
               </MenuItem>
             </Menu>
           </>

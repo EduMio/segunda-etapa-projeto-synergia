@@ -19,7 +19,8 @@ export const TaskForm = () => {
       state:null,
       userId:user._id,
       userName:user.username,
-      createdAt:new Date() 
+      createdAt:new Date(),
+      isPrivate:false
     });
 
     setText("");
@@ -43,7 +44,7 @@ export const TaskForm = () => {
         fullWidth
         size="small"
         variant="outlined"
-        placeholder="Type to add new tasks"
+        placeholder="Título da nova tarefa"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
@@ -53,7 +54,7 @@ export const TaskForm = () => {
         color="primary"
         disableElevation
       >
-        Add
+        Adicionar
       </Button>
     </Paper>
   );

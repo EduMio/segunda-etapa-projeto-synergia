@@ -3,9 +3,22 @@ import {TasksCollection} from "./TasksCollection"
 
 Meteor.publish("tasks",
     function () {
-        const userId = this.userId;
-        if(!userId){
-            return this.ready();
-        }
-        return TasksCollection.find({userId});}
+        return TasksCollection.find();}
 );
+
+Meteor.publish('tasksWithPrivacy', function () {
+  if (!this.userId) {
+    return TasksCollection.find({ isPrivate: false });
+  }
+
+  return TasksCollection.find({
+    $or: [
+      { isPrivate: false },       
+      { userId: this.userId }     
+    ]
+  });
+});
+
+Meteor.publish('task.byId', function (id) {
+  return TasksCollection.find({ _id: id });
+});
