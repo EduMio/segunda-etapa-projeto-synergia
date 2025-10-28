@@ -16,7 +16,7 @@ export const TaskForm = () => {
     await Meteor.callAsync("tasks.insert", {
       name: text.trim(),
       description:"",
-      state:null,
+      state:"Cadastrada",
       userId:user._id,
       userName:user.username,
       createdAt:new Date(),
