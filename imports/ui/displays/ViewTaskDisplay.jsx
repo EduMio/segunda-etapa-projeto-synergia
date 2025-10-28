@@ -6,7 +6,7 @@ import { TaskDetails } from '../components/tasks/TaskDetails';
 import { useNavigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { useUser } from '../UserContext';
-import { Button, Stack  } from '@mui/material';
+import { Button, Stack,Box  } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const ViewTaskDisplay = () => {
@@ -23,29 +23,32 @@ export const ViewTaskDisplay = () => {
   }, [taskId]);
 
   return (
-    <Stack alignItems="stretch" sx={{ mt: 3, px: 2 }}>
-      <TaskDetails
-        task={task}
-        onEdit={({ _id }) => {
-          if (user._id === task.userId) navigate(`/edit/${_id}`);
-        }}
-        onDelete={({ _id }) => {
-          if (user._id === task.userId) {
-            Meteor.callAsync("tasks.delete", { _id });
-            navigate('/home');
-          }
-        }}
-      />
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="90vh" >
+    
+      <Stack alignItems="stretch" sx={{ mt: 3, px: 2 }}>
+        <TaskDetails
+          task={task}
+          onEdit={({ _id }) => {
+            if (user._id === task.userId) navigate(`/edit/${_id}`);
+          }}
+          onDelete={({ _id }) => {
+            if (user._id === task.userId) {
+              Meteor.callAsync("tasks.delete", { _id });
+              navigate('/home');
+            }
+          }}
+        />
 
-      <Button
-        variant="contained"
-        color="primary"
-        startIcon={<ArrowBackIcon />}
-        sx={{ mt: 2, maxWidth: 200, alignSelf: 'center' }}
-        onClick={() => navigate('/home')}
-      >
-       Voltar ao início
-      </Button>
-    </Stack>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<ArrowBackIcon />}
+          sx={{ mt: 2, maxWidth: 200, alignSelf: 'center' }}
+          onClick={() => navigate('/home')}
+        >
+        Voltar ao início
+        </Button>
+      </Stack>
+    </Box>
   );
 };

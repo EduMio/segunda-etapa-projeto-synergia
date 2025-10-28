@@ -5,9 +5,9 @@
         "target": "ES2024",
         "jsx": "react-jsx",
         "allowImportingTsExtensions": true,
-        "checkJs": true,
+        "checkJs": false,
         "strictNullChecks": false,
-        "strictFunctionTypes": true
+        "strictFunctionTypes": false
     },
     "exclude": [
         "node_modules",

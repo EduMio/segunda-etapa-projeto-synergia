@@ -70,83 +70,85 @@ export const EditTaskDisplay = () => {
   };
 
   return (
-    <Paper
-      component="form"
-      onSubmit={handleSubmit}
-      elevation={3}
-      sx={{
-        p: 3,
-        mt: 4,
-        maxWidth: 520,
-        mx: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-      }}
-    >
-      <Typography variant="h6">Editar Tarefa</Typography>
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="90vh">
+      <Paper
+        component="form"
+        onSubmit={handleSubmit}
+        elevation={3}
+        sx={{
+          p: 3,
+          mt: 4,
+          maxWidth: 520,
+          mx: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        <Typography variant="h6">Editar Tarefa</Typography>
 
-      <TextField
-        label="Nome"
-        variant="outlined"
-        size="small"
-        required
-        fullWidth
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <TextField
-        label="Descrição"
-        variant="outlined"
-        size="small"
-        fullWidth
-        multiline
-        minRows={3}
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-
-      <FormControl size="small" fullWidth>
-        <InputLabel id="state-label">State</InputLabel>
-        <Select
-          labelId="state-label"
-          label="State"
-          value={stateVal}
-          onChange={(e) => setStateVal(e.target.value)}
-        >
-          <MenuItem value="Cadastrada">Cadastrada</MenuItem>
-          <MenuItem value="Em Andamento">Em Andamento</MenuItem>
-          <MenuItem value="Concluída">Concluída</MenuItem>
-        </Select>
-      </FormControl>
-
-      <Box display="flex" alignItems="center" gap={1}>
-        <Switch
-          checked={isPrivateVal}
-          onChange={handleChange}
-          slotProps={{ input: { 'aria-label': 'controlled' } }}
+        <TextField
+          label="Nome"
+          variant="outlined"
+          size="small"
+          required
+          fullWidth
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
-        <Typography>Privado</Typography>
-      </Box>
 
-      <Stack direction="row" justifyContent="flex-end" spacing={1} sx={{ mt: 1 }}>
-        <Button
-          variant="text"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => navigate(`/view/${task._id}`)}
-        >
-          Cancelar
-        </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          startIcon={<SaveIcon />}
-          disabled={!name.trim()}
-        >
-          Salvar
-        </Button>
-      </Stack>
-    </Paper>
+        <TextField
+          label="Descrição"
+          variant="outlined"
+          size="small"
+          fullWidth
+          multiline
+          minRows={3}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <FormControl size="small" fullWidth>
+          <InputLabel id="state-label">State</InputLabel>
+          <Select
+            labelId="state-label"
+            label="State"
+            value={stateVal}
+            onChange={(e) => setStateVal(e.target.value)}
+          >
+            <MenuItem value="Cadastrada">Cadastrada</MenuItem>
+            <MenuItem value="Em Andamento">Em Andamento</MenuItem>
+            <MenuItem value="Concluída">Concluída</MenuItem>
+          </Select>
+        </FormControl>
+
+        <Box display="flex" alignItems="center" gap={1}>
+          <Switch
+            checked={isPrivateVal}
+            onChange={handleChange}
+            slotProps={{ input: { 'aria-label': 'controlled' } }}
+          />
+          <Typography>Privado</Typography>
+        </Box>
+
+        <Stack direction="row" justifyContent="flex-end" spacing={1} sx={{ mt: 1 }}>
+          <Button
+            variant="text"
+            startIcon={<ArrowBackIcon />}
+            onClick={() => navigate(`/view/${task._id}`)}
+          >
+            Cancelar
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            startIcon={<SaveIcon />}
+            disabled={!name.trim()}
+          >
+            Salvar
+          </Button>
+        </Stack>
+      </Paper>
+    </Box>
   );
 };

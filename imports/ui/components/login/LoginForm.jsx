@@ -46,7 +46,7 @@ export const LoginForm = () => {
 
       <Stack spacing={2}>
         <TextField
-          label="Username"
+          label="Nome do usuário"
           variant="outlined"
           size="small"
           required
@@ -56,7 +56,7 @@ export const LoginForm = () => {
         />
 
         <TextField
-          label="Password"
+          label="Senha"
           variant="outlined"
           size="small"
           type="password"

@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
-import { Meteor } from 'meteor/meteor';
 import {
   AppBar, Toolbar, Typography, Container, Box,
   Button, Stack
 } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
 import { TaskForm } from './TaskForm';
 import { TaskList } from './TaskList';
 import { useUser } from '../../UserContext';
@@ -25,16 +24,14 @@ export const TaskInterface = ({ tasks }) => {
                 To Do List
             </Typography>
         </Stack>
-        <Box sx={{ flexGrow: 1 }} />
-        {user && (
+    <Box sx={{ flexGrow: 1 }} />
           <Button
             color="inherit"
-            startIcon={<LogoutIcon />}
-            onClick={() => {Meteor.logout();navigate('/login');}}
+            startIcon={<PersonIcon />}
+            onClick={() => {navigate('/user');}}
           >
             {user.username}
           </Button>
-        )}
       </Toolbar>
     </AppBar>
 
