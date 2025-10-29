@@ -34,7 +34,7 @@ export const ViewTaskDisplay = () => {
           onDelete={({ _id }) => {
             if (user._id === task.userId) {
               Meteor.callAsync("tasks.delete", { _id });
-              navigate('/home');
+              navigate('/tasklist');
             }
           }}
         />
@@ -44,7 +44,7 @@ export const ViewTaskDisplay = () => {
           color="primary"
           startIcon={<ArrowBackIcon />}
           sx={{ mt: 2, maxWidth: 200, alignSelf: 'center' }}
-          onClick={() => navigate('/home')}
+          onClick={() => navigate('/tasklist')}
         >
         Voltar ao início
         </Button>

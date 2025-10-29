@@ -58,8 +58,8 @@ export const EditTaskDisplay = () => {
     return (
       <Stack alignItems="center" sx={{ mt: 6 }}>
         <Typography variant="h6">Tarefa não encontrada</Typography>
-        <Button startIcon={<ArrowBackIcon />} sx={{ mt: 2 }} onClick={() => navigate('/home')}>
-          Back
+        <Button startIcon={<ArrowBackIcon />} sx={{ mt: 2 }} onClick={() => navigate('/tasklist')}>
+          Voltar
         </Button>
       </Stack>
     );

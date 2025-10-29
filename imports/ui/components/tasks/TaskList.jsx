@@ -1,5 +1,5 @@
 import React from 'react';
-import { List,Box } from "@mui/material";
+import { List, Box } from "@mui/material";
 import PropTypes from 'prop-types';
 import { Task } from "./Task";
 import { Meteor } from "meteor/meteor";
