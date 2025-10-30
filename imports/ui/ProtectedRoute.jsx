@@ -3,9 +3,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useUser } from './UserContext';
 
 export const ProtectedRoute = () => {
-  const { user } = useUser();
+    const { user } = useUser();
 
-  if (user === undefined) return null;
+    if (user === undefined) return null;
 
-  return user ? <Outlet /> : <Navigate to="/login" replace />;
+    return user ? <Outlet /> : <Navigate to="/login" replace />;
 };

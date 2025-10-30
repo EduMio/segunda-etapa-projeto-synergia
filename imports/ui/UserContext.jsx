@@ -8,17 +8,16 @@ const UserContext = createContext(null);
 export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-  
-  const user = useTracker(() => Meteor.user());
-  const userId = useTracker(() => Meteor.userId());
+    const user = useTracker(() => Meteor.user());
+    const userId = useTracker(() => Meteor.userId());
 
-  return (
-    <UserContext.Provider value={{ user, userId }}>
-      {children}
-    </UserContext.Provider>
-  );
+    return (
+        <UserContext.Provider value={{ user, userId }}>
+            {children}
+        </UserContext.Provider>
+    );
 };
 
 UserProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
 };
