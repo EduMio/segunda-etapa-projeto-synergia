@@ -13,45 +13,45 @@ import { ProtectedRoute } from '../imports/ui/ProtectedRoute';
 import '../imports/api/TasksMethods';
 
 Meteor.startup(() => {
-    const container = document.getElementById('react-target');
-    if (!container) throw new Error('#react-target not found');
+	const container = document.getElementById('react-target');
+	if (!container) throw new Error('#react-target not found');
 
-    const root = createRoot(container);
-    root.render(
-        <BrowserRouter>
-            <UserProvider>
-                <Routes>
-                    <Route path="/login" element={<LoginDisplay />} />
+	const root = createRoot(container);
+	root.render(
+		<BrowserRouter>
+			<UserProvider>
+				<Routes>
+					<Route path="/login" element={<LoginDisplay />} />
 
-                    <Route element={<ProtectedRoute />}>
-                        <Route path="/home" element={<DashBoardDisplay />} />
-                    </Route>
+					<Route element={<ProtectedRoute />}>
+						<Route path="/home" element={<DashBoardDisplay />} />
+					</Route>
 
-                    <Route element={<ProtectedRoute />}>
-                        <Route path="/tasklist" element={<TaskDisplay />} />
-                    </Route>
+					<Route element={<ProtectedRoute />}>
+						<Route path="/tasklist" element={<TaskDisplay />} />
+					</Route>
 
-                    <Route element={<ProtectedRoute />}>
-                        <Route
-                            path="/view/:taskId"
-                            element={<ViewTaskDisplay />}
-                        />
-                    </Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/view/:taskId"
+							element={<ViewTaskDisplay />}
+						/>
+					</Route>
 
-                    <Route element={<ProtectedRoute />}>
-                        <Route
-                            path="/edit/:taskId"
-                            element={<EditTaskDisplay />}
-                        />
-                    </Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/edit/:taskId"
+							element={<EditTaskDisplay />}
+						/>
+					</Route>
 
-                    <Route element={<ProtectedRoute />}>
-                        <Route path="/user" element={<EditUserDisplay />} />
-                    </Route>
+					<Route element={<ProtectedRoute />}>
+						<Route path="/user" element={<EditUserDisplay />} />
+					</Route>
 
-                    <Route path="*" element={<LoginDisplay />} />
-                </Routes>
-            </UserProvider>
-        </BrowserRouter>
-    );
+					<Route path="*" element={<LoginDisplay />} />
+				</Routes>
+			</UserProvider>
+		</BrowserRouter>
+	);
 });
